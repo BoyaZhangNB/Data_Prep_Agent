@@ -1,0 +1,45 @@
+general:
+  use_uvloop: true
+
+functions:
+  jupiter_notebook_generation:
+    _type: jupiter_notebook_generation
+    llm_name: nim_llm
+    plan_llm_name: reasoning_llm
+    description: "Always use this tool when the user wants to code or preprocess data in jupyter notebook. Only run this after feature_label_identifier has been ran. This notebook will have a complete processing pipeline. You should give instructions on the details of preprocessing should be specified."
+    chunk_size: 512
+
+  feature_label_identifier:
+    _type: feature_label_identifier
+    llm_name: light_llm
+    description: "After a data file is ingested, always use this tool to identfy the features and labels. This should always be used before jupyter notebook generation"
+
+llms:
+  nim_llm:
+    _type: nim
+    model_name: meta/llama-3.1-70b-instruct
+    temperature: 0.0
+
+  light_llm:
+    _type: nim
+    model_name: meta/llama-3.1-8b-instruct
+    temperature: 0.0
+
+  reasoning_llm:
+    _type: nim
+    model_name: deepseek-ai/deepseek-r1
+    temperature: 0.0
+
+embedders:
+  nv-embedqa-e5-v5:
+    _type: nim
+    model_name: nvidia/nv-embedqa-e5-v5
+
+
+workflow:
+  _type: react_agent
+  tool_names: [feature_label_identifier, jupiter_notebook_generation]
+  llm_name: nim_llm
+  verbose: true
+  retry_parsing_errors: true
+  max_retries: 3

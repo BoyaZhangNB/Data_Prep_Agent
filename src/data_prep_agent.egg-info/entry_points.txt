@@ -1,0 +1,2 @@
+[aiq.components]
+data_prep_agent = data_prep_agent.register
