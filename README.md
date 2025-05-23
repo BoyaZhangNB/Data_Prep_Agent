@@ -23,3 +23,6 @@ and put `data-prep-agent` into the `aiqtoolkit` folder and run `uv pip install -
 
 # Running the project
 First start a aiq server through `aiq serve --config_file=data_prep_agent/configs/config.yml`. Then, run the `data_prep_agent/src/data_prep_agent/frontend.py` file and open, if hosting locally, `http://127.0.0.1:5000/`. Upload a single data file, and then ask the agent to perform various data preprocessing and testing on the data. A jupyter notebook can be found at `data_prep_agent/src/jupyter_notebooks` which contains the code that preprocesses the code. You can export the notebook to your colab and use the data to train your machine learning model.
+
+# Demo video
+[![Watch the video](https://img.youtube.com/vi/_yWhdwHayYM/0.jpg)](https://youtu.be/_yWhdwHayYM)
